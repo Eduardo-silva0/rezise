@@ -3,3 +3,9 @@ node_modules
 
 # yarn.lock
 yarn.lock
+
+# redimensionado
+redimensionado
+
+# originalImage
+/originalImage/**

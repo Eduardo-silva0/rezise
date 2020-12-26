@@ -4,11 +4,12 @@ const fs = require('fs')
 
 const filepath = process.argv[2]
 
-const dirname = path.dirname(filepath)
+const arrayFilepath= path.basename(filepath).split(".")
 
-const [filename, extension] = path.basename(filepath).split(".")
+const filename = arrayFilepath[0]
+const extension = arrayFilepath[arrayFilepath.length -1]
 
-const destination = `${dirname}/redimensionado`
+const destination = './redimensionado'
 
 if(!fs.existsSync(destination)) {
   fs.mkdirSync(destination)
@@ -20,9 +21,7 @@ sizes.forEach(size=>{
   sharp(filepath)
     .clone()
     .resize({width:size})
-    .toFile(`${destination}/${filename}-${size}
-      .${extension}
-    `)
+    .toFile(`${destination}/${filename}-${size}.${extension}`)
     .then(info=>{
       console.log(info)
     })
